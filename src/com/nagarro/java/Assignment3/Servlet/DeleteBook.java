@@ -28,8 +28,13 @@ public class DeleteBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		new UserServiceImpl().deleteBook(1);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		if(new UserServiceImpl().deleteBook(Integer.parseInt(request.getParameter("imageId")))){
+			response.sendRedirect("./dashboard.jsp");
+		}else {
+			request.setAttribute("deletedStatus", "Book not deleted");
+			request.getRequestDispatcher("./dashboard.jsp").forward(request, response);
+		}
 	}
 
 	/**

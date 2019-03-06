@@ -36,4 +36,10 @@ public class UserServiceImpl implements Service{
 		System.out.println("In Service Delete Book function");
 		return new UserDaoImpl().deleteBook(id);
 	}
+
+	@Override
+	public boolean editBook(int id) {
+		System.out.println("In service layer of edit book");
+		return new UserDaoImpl().editBook(id);
+	}
 }

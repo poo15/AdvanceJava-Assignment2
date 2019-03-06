@@ -13,18 +13,37 @@
 
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
-    <url-pattern>.Login</url-pattern>
+    <url-pattern>/Login</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+   <servlet>
     <servlet-name>ImageUpload</servlet-name>
     <servlet-class>com.nagarro.java.Assignment3.Servlet.ImageUpload</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>ImageUpload</servlet-name>
-    <url-pattern>.ImageUpload</url-pattern>
+    <url-pattern>/ImageUpload</url-pattern>
   </servlet-mapping>
-  
+	
+  <servlet>
+    <servlet-name>DeleteBook</servlet-name>
+    <servlet-class>com.nagarro.java.Assignment3.Servlet.DeleteBook</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DeleteBook</servlet-name>
+    <url-pattern>/DeleteBook</url-pattern>
+  </servlet-mapping>
+	
+  <servlet>
+    <servlet-name>EditBook</servlet-name>
+    <servlet-class>com.nagarro.java.Assignment3.Servlet.EditBook</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditBook</servlet-name>
+    <url-pattern>/EditBook</url-pattern>
+  </servlet-mapping>  
 </web-app>
 </element>

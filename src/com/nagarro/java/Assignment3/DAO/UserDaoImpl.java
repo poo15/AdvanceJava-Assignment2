@@ -74,7 +74,22 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public boolean deleteBook(int id) {
-		System.out.println("In DAO Delete Function");
+		System.out.println("In dao delete book");
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			Image image = session.find(Image.class, id);
+			System.out.println("Item to be dleted"+image);
+			session.beginTransaction();
+			session.delete(image);
+			session.getTransaction().commit();
+		}catch(Exception e){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean editBook(int id) {
+		System.out.println("In Dao layer of edit book");
 		return false;
 	}
 

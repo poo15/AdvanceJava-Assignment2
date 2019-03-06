@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -31,6 +33,7 @@ public class User {
 	
 	@OneToMany
 	@JoinTable(name="User_Image")
+	@Cascade(CascadeType.REMOVE)
 	private Collection<Image> imagebooks = new ArrayList<Image>();
 	
 	public int getUser_Id() {

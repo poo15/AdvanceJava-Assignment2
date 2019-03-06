@@ -75,8 +75,10 @@
 	 			<td><%=img.getName() %></td>
 	 			<td><%=img.getSize() %></td>
 	 			<td><img src="<%=img.getUrl()%>" class="img-fluid" alt="Book" height="100px" width="40%"></td>
-	 			<td><i class="fas fa-pencil-alt" style="margin-right: 30%" id="<%=img.getImageId()%>"></i><i class="fas fa-trash-alt"></i></td>
-	 			<td></td>
+	 			<td>
+	 				<a href="EditBook?imageId=<%=img.getImageId()%>"><i  class="fas fa-pencil-alt" style="margin-right: 30%" id="<%=img.getImageId()%>"></i></a>
+	 				<a href="DeleteBook?imageId=<%=img.getImageId()%>"><i class="fas fa-trash-alt"></i></a>
+	 			</td>
 	 		</tr>		
 	 	<%i++;} %>
 	  </tbody>

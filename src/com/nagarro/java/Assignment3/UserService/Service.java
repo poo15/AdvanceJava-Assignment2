@@ -14,4 +14,6 @@ public interface Service {
 	List<Image> getAllBooks(int userId);
 	
 	boolean deleteBook(int id);
+	
+	boolean editBook(int id);
 }

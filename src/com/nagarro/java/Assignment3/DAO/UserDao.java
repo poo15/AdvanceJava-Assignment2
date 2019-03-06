@@ -14,4 +14,6 @@ public interface UserDao {
 	List<Image> getAllBooks(int id);
 	
 	boolean deleteBook(int id);
+	
+	boolean editBook(int id);
 }
