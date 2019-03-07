@@ -45,5 +45,17 @@
     <servlet-name>EditBook</servlet-name>
     <url-pattern>/EditBook</url-pattern>
   </servlet-mapping>  
+
+	<servlet>
+    <servlet-name>PasswordRecovery</servlet-name>
+    <servlet-class>com.nagarro.java.Assignment3.Servlet.PasswordRecovery</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PasswordRecovery</servlet-name>
+    <url-pattern>/PasswordRecovery</url-pattern>
+  </servlet-mapping> 	
+	
 </web-app>
 </element>
+

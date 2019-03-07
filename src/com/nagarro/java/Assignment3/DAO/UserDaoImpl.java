@@ -35,21 +35,18 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean addBook(String fileName, int size, User user) {
+	public boolean addBook(Image image) {
 		System.out.println("In add Book on DAO");
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
-			User us = session.get(User.class, user.getUser_Id());
+			User us = session.get(User.class, image.getUser().getUser_Id());
 			System.out.println("In dao us"+us);
-			Image image = new Image();
-			image.setUrl(Constant.DIRECTORY+fileName);
-			image.setSize(size);
-			String[] name = fileName.split("\\.");
-			image.setName(name[0]);
 			us.getImagebooks().add(image);
+//			double totalSize = getTotalSize(image.getUser().getUser_Id());
+//			System.out.println("Total File size :- "+totalSize/Constant.MEGABYTE);
+			
 			System.out.println("User latest books :- "+us.getImagebooks());
 			session.beginTransaction();
 			session.persist(image);
-			//session.update(us);
 			session.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -57,10 +54,23 @@ public class UserDaoImpl implements UserDao{
 		}
 		return true;
 	}
-
+	
+	
+	private double getTotalSize(int id){
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			User user = session.get(User.class, id);
+			String HQL = "SELECT sum(size) FROM Image WHERE user_Id=:userId";
+			Query query = session.createQuery(HQL);
+			query.setParameter("userId", user.getUser_Id());
+			 return  (double) query.list().get(0);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
 	@Override
 	public List<Image> getAllBooks(int id) {
-		System.out.println("In get All Function");
 		List<Image> image = new ArrayList<Image>();
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 			User user = session.get(User.class, id);
@@ -74,10 +84,8 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public boolean deleteBook(int id) {
-		System.out.println("In dao delete book");
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 			Image image = session.find(Image.class, id);
-			System.out.println("Item to be dleted"+image);
 			session.beginTransaction();
 			session.delete(image);
 			session.getTransaction().commit();
@@ -91,6 +99,23 @@ public class UserDaoImpl implements UserDao{
 	public boolean editBook(int id) {
 		System.out.println("In Dao layer of edit book");
 		return false;
+	}
+
+	@Override
+	public User findUserName(String userName) {
+		System.out.println("In Dao of find user");
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			String HQL = "FROM User WHERE userName=:userName";
+			Query<User> query = session.createQuery(HQL,User.class);
+			query.setParameter("userName", userName);
+			User user = query.uniqueResult();
+			if(user!=null){
+				return user;
+			}
+		} catch(Exception e ){
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 
 }

@@ -6,4 +6,7 @@ public class Constant {
 	public static int MAX_FILE_SIZE = 1024*1024*10;
 	public static int NAME_INDEX = 0;
 	
+	public static double MEGABYTE = 1024 * 1024;
+
+	
 }

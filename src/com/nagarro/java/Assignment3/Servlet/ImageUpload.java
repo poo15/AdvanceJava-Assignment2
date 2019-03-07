@@ -16,6 +16,7 @@ import javax.servlet.http.Part;
 import org.hibernate.Session;
 
 import com.nagarro.java.Assignment3.Constants.Constant;
+import com.nagarro.java.Assignment3.Entity.Image;
 import com.nagarro.java.Assignment3.Entity.User;
 import com.nagarro.java.Assignment3.UserService.UserServiceImpl;
 
@@ -52,8 +53,8 @@ public class ImageUpload extends HttpServlet {
 			String savePath = Constant.DIRECTORY+File.separator+fileName;
 			File fileSaveDir = new File(savePath);
 			part.write(savePath + File.separator);
-			User user = (User) request.getSession().getAttribute("user");
-			if(new UserServiceImpl().addBook(fileName,(int) part.getSize()/1000,user)){
+			User user = (User) request.getSession().getAttribute("user");		
+			if(new UserServiceImpl().addBook(getEmployee(request, part, fileName, user))){
 				System.out.println("Added");
 			}else
 				System.out.println("Not added");
@@ -62,6 +63,21 @@ public class ImageUpload extends HttpServlet {
 			request.setAttribute("sizeExceed", "File Size Exceed");
 			request.getRequestDispatcher("./dashboard.jsp").forward(request, response);
 		}
+	}
+
+	/**
+	 * @param request
+	 * @param part
+	 * @param fileName
+	 * @param user
+	 */
+	private Image getEmployee(HttpServletRequest request, Part part, String fileName, User user) {
+		Image image = new Image();
+		image.setName(request.getParameter("bookName"));
+		image.setSize((int) part.getSize());
+		image.setUrl(Constant.DIRECTORY+fileName);
+		image.setUser(user);
+		return image;
 	}
 
 	/**

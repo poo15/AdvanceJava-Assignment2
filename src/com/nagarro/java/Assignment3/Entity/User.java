@@ -18,22 +18,20 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "User", uniqueConstraints={@UniqueConstraint(columnNames={"userName"})})
+@Table(name = "User",uniqueConstraints={@UniqueConstraint(columnNames={"userName"})})
 @DynamicUpdate
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_Id;
-	
+	@Column(length=50)
 	private String userName;
 	private String password;
 	private String recoveryAns;
 	
 	
 	
-	@OneToMany
-	@JoinTable(name="User_Image")
-	@Cascade(CascadeType.REMOVE)
+	@OneToMany(mappedBy="user")
 	private Collection<Image> imagebooks = new ArrayList<Image>();
 	
 	public int getUser_Id() {

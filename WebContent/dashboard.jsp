@@ -26,12 +26,14 @@
   <span class="navbar-brand mb-0 h1" style="margin-left: 30%">Image Utility System</span>
 </nav>
 
- <h1><%=session.getAttribute("user")%></h1> 
-
 <!-- Image upload Input -->
 
 <div style="margin:10% 10% 0% 10%">
 <form action="ImageUpload" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+	    <label for="bookName">Book Name</label>
+	    <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Enter Book Name">
+	</div>
 	<p class="h6">Please select an image File to upload(Max size 10 MB)</h>
 	<div class="input-group">
 	  <div class="custom-file">
@@ -51,7 +53,7 @@
 	</form>
 	<% if(request.getAttribute("sizeExceed") != null) {%>
 	  <p class="h6" style="color:red"> <%= request.getAttribute("sizeExceed") %> </p>
-	  <%} %>
+	 <% } %>
 </div>
 
 <!-- User Images View -->

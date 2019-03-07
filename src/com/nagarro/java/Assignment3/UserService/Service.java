@@ -9,11 +9,15 @@ public interface Service {
 	
 	User login(String userName, String password);
 	
-	boolean addBook(String fileName,int size,User user);
+	boolean addBook(Image image);
 	
 	List<Image> getAllBooks(int userId);
 	
 	boolean deleteBook(int id);
 	
 	boolean editBook(int id);
+	
+	User findUserName(String userName);
+	
+	
 }

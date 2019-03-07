@@ -21,9 +21,9 @@ public class UserServiceImpl implements Service{
 	}
 	
 	@Override
-	public boolean addBook(String fileName,int size, User user) {
+	public boolean addBook(Image image) {
 		System.out.println("In add book in server");
-		return new UserDaoImpl().addBook(fileName,size,user);
+		return new UserDaoImpl().addBook(image);
 	}
 
 	@Override
@@ -41,5 +41,11 @@ public class UserServiceImpl implements Service{
 	public boolean editBook(int id) {
 		System.out.println("In service layer of edit book");
 		return new UserDaoImpl().editBook(id);
+	}
+
+	@Override
+	public User findUserName(String userName) {
+		System.out.println("In service of find user");
+		return new UserDaoImpl().findUserName(userName);
 	}
 }
