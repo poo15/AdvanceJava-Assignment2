@@ -13,12 +13,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <title>Welcome</title>
 </head>
+<style>
+	a{
+		color:white;
+	}
+	a:HOVER {
+	color:black;
+}
+</style>
 <body>
 
 <!-- Navbar  -->
@@ -78,13 +85,54 @@
 	 			<td><%=img.getSize() %></td>
 	 			<td><img src="<%=img.getUrl()%>" class="img-fluid" alt="Book" height="100px" width="40%"></td>
 	 			<td>
-	 				<a href="EditBook?imageId=<%=img.getImageId()%>"><i  class="fas fa-pencil-alt" style="margin-right: 30%" id="<%=img.getImageId()%>"></i></a>
-	 				<a href="DeleteBook?imageId=<%=img.getImageId()%>"><i class="fas fa-trash-alt"></i></a>
+	 			<div class="row">
+	 				<div class="col-6 m-2">
+			 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=img.getImageId()%>Modal">
+						  <i class="fas fa-pencil-alt" style="margin-right: 30%" id="<%=img.getImageId()%>"></i>
+						</button>
+	 				</div>
+	 				<div class="col-6 m-2">
+	 				<form action="DeleteBook" >		
+			 			<button type="submit" name="bookId" value="<%=img.getImageId()%>" class="btn btn-primary">
+						  <i class="fas fa-trash-alt"></i>
+			 			</button>
+			 		</form>
+	 				</div>
+	 			</div>
+	 			<form action="DeleteBook">
+	 			<div class="modal fade" id="<%=img.getImageId()%>Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Your Book Details</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				      	<div class="form-group">
+						    <label for="bookName">Book Name</label>
+						    <input type="text" class="form-control" name="bookName" id="bookName" value="<%=img.getName() %>">
+						</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="submit" name="submit" value="edit-<%=img.getImageId() %>" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				</form>	
 	 			</td>
 	 		</tr>		
 	 	<%i++;} %>
 	  </tbody>
 	</table>
+
+
+
+
+
 
 </div>
 

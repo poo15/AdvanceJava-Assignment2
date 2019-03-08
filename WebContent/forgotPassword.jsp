@@ -43,7 +43,7 @@
 		 <%if(request.getAttribute("userName") != null && request.getAttribute("userPassword")!=null){ %>
 		  		<br> <p class="h6" >Your Password is<b> <%= request.getAttribute("userPassword") %> </b></p>
 		  
-		  <%} %>
+		  <%} %><a href="./index.jsp">Login?</a>
 	</div>
 
 

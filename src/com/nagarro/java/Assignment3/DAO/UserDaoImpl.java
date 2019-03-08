@@ -13,17 +13,17 @@ import com.nagarro.java.Assignment3.Entity.User;
 import com.nagarro.java.Assignment3.Util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao{
-
+	private static User user=null;
 	@Override
 	public User login(String userName, String password) {
 		System.out.println("In Dao Layer");
-		User user = null;
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 		String HQL = "FROM User WHERE userName=:userName AND password=:password";
 		Query<User> query = session.createQuery(HQL,User.class);
 		query.setParameter("userName", userName);
 		query.setParameter("password", password);
 		user = query.uniqueResult();
+		System.out.println("Logined user "+user);
 		if(user!=null){
 		System.out.println("Logged In "+user);
 		}else
@@ -96,19 +96,38 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean editBook(int id) {
-		System.out.println("In Dao layer of edit book");
+	public boolean editBook(int bookId, String bookName) {
+		System.out.println("In Dao layer of edit book"+" bookId:- "+bookId+" book name to be set :- "+bookName);
+		try(Session session= HibernateUtil.getSessionFactory().openSession()){
+			Image image = session.find(Image.class, bookId);
+			session.beginTransaction();
+			image.setName(bookName);
+			session.getTransaction().commit();
+			return true;
+		} catch(Exception e ){
+			System.out.println(e.getMessage());
+		}
 		return false;
 	}
 
+	private Session getSession(){
+		try(Session session= HibernateUtil.getSessionFactory().openSession()){
+			return session;
+		} catch(Exception e ){
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	@Override
 	public User findUserName(String userName) {
 		System.out.println("In Dao of find user");
 		try(Session session = HibernateUtil.getSessionFactory().openSession()){
-			String HQL = "FROM User WHERE userName=:userName";
+			String HQL = "FROM User u WHERE userName=:userName";
 			Query<User> query = session.createQuery(HQL,User.class);
 			query.setParameter("userName", userName);
 			User user = query.uniqueResult();
+			System.out.println("**************Searched User"+user);
 			if(user!=null){
 				return user;
 			}

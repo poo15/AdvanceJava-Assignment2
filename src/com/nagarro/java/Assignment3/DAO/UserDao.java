@@ -15,7 +15,9 @@ public interface UserDao {
 	
 	boolean deleteBook(int id);
 	
-	boolean editBook(int id);
+	boolean editBook(int bookId, String bookName);
 	
 	User findUserName(String userName);
+	
+	
 }

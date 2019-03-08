@@ -38,9 +38,9 @@ public class UserServiceImpl implements Service{
 	}
 
 	@Override
-	public boolean editBook(int id) {
+	public boolean editBook(int bookId, String bookName) {
 		System.out.println("In service layer of edit book");
-		return new UserDaoImpl().editBook(id);
+		return new UserDaoImpl().editBook(bookId,bookName);
 	}
 
 	@Override
@@ -48,4 +48,6 @@ public class UserServiceImpl implements Service{
 		System.out.println("In service of find user");
 		return new UserDaoImpl().findUserName(userName);
 	}
+
+	
 }

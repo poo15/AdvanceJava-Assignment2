@@ -70,9 +70,13 @@ public class User {
 	public void setImagebooks(Collection<Image> imagebooks) {
 		this.imagebooks = imagebooks;
 	}
-	
+
+
 	@Override
 	public String toString() {
-		return "User [user_Id=" + user_Id + ", userName=" + userName + ", password=" + password + "]";
+		return "User [user_Id=" + user_Id + ", userName=" + userName + ", password=" + password + ", recoveryAns="
+				+ recoveryAns + ", imagebooks=" + imagebooks + "]";
 	}
+	
+	
 }

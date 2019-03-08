@@ -28,12 +28,26 @@ public class DeleteBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(new UserServiceImpl().deleteBook(Integer.parseInt(request.getParameter("imageId")))){
-			response.sendRedirect("./dashboard.jsp");
-		}else {
-			request.setAttribute("deletedStatus", "Book not deleted");
+		String bookDetails = request.getParameter("submit");
+		if(bookDetails!=null && bookDetails.contains("edit")){
+			String bookId[] = bookDetails.split("-");
+			String bookNewName = request.getParameter("bookName");
+			if(bookNewName!=null){
+				if(new UserServiceImpl().editBook(Integer.parseInt(bookId[1]),bookNewName)){
+					System.out.println("Edit done");
+				}else{
+					System.out.println("Not done");
+				}
+				
+			}
 			request.getRequestDispatcher("./dashboard.jsp").forward(request, response);
+		}else{
+			if(new UserServiceImpl().deleteBook(Integer.parseInt(request.getParameter("bookId")))){
+				response.sendRedirect("./dashboard.jsp");
+			}else {
+				request.setAttribute("deletedStatus", "Book not deleted");
+				request.getRequestDispatcher("./dashboard.jsp").forward(request, response);
+			}
 		}
 	}
 
