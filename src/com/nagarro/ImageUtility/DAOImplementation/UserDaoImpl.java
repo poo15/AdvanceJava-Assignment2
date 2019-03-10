@@ -145,4 +145,21 @@ public class UserDaoImpl implements UserDao{
 		return null;
 	}
 
+	@Override
+	public User register(User user) {
+		User registerUser = new User();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
+			registerUser.setUserName(user.getUserName());
+			registerUser.setPassword(user.getPassword());
+			registerUser.setRecoveryAns(user.getRecoveryAns());
+			session.beginTransaction();
+			session.persist(registerUser);
+			session.getTransaction().commit();
+		} catch(Exception e ){
+			System.out.println(e.getMessage());
+			return null;
+		}
+			return registerUser;
+	}
+
 }

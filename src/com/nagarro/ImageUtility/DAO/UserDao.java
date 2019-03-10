@@ -9,6 +9,8 @@ public interface UserDao {
 	
 	User login(String userName, String password);
 	
+	User register(User user);
+	
 	boolean addBook(Image image);
 	
 	List<Image> getAllBooks(int id);

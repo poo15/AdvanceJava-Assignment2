@@ -9,6 +9,8 @@ public interface Service {
 	
 	User login(String userName, String password);
 	
+	User register(User user);
+	
 	boolean addBook(Image image);
 	
 	List<Image> getAllBooks(int userId);

@@ -15,6 +15,7 @@ public class Constant {
 	public static String IMAGE_NAME = "bookName";
 	public static String DASHBOARD = "./dashboard.jsp";
 	public static String INDEX = "./index.jsp";
+	public static String REGISTER = "./register.jsp";
 	public static String FORGOT_PASSWORD = "/forgotPassword.jsp";
 	public static String DELETED_STATUS = "deletedStatus";
 	public static String DELETED_VALUE = "Book Not Deleted";
@@ -31,6 +32,7 @@ public class Constant {
 	public static String INCORRECT_ANS = "incorrectAns";
 	public static String INCORRECT_ANS_MSG = "Incorrect Ans";
 	public static int NAME_INDEX = 0;
+	public static String UNIQUE_USERNAME = "This username is not available ";
 	
 	public static long MEGABYTE = 102400;
 

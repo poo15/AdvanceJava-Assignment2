@@ -48,5 +48,11 @@ public class UserServiceImpl implements Service{
 		return new UserDaoImpl().findUserName(userName);
 	}
 
+	@Override
+	public User register(User user) {
+		
+		return new UserDaoImpl().register(user);
+	}
+
 	
 }

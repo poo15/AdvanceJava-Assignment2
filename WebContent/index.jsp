@@ -26,7 +26,8 @@
 	  <p class="h6" style="color:red"> <%= request.getAttribute("invalidCredentials") %> </p>
 	  <%} %>
 	  <div style="text-decoration: underline; color: blue">
-	  	 <a href="./forgotPassword.jsp" >Forgot Password?</a>	  	
+	  	 <a href="./forgotPassword.jsp" >Forgot Password?</a>	
+	  	 <a href="./register.jsp" >Sign Up?</a>	  	
 	  </div><br>
 	  <button type="submit" class="btn btn-primary float-right" style="padding:1% 5% 1% 5%">Login</button>
 	</form>
