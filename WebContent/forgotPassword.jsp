@@ -17,33 +17,37 @@
 </nav>
 
 <div style="margin:10% 10% 0% 10%">
-<form action="PasswordRecovery" method="post">
+<form action="PasswordRecoveryController" method="post">
 	<div class="input-group flex-nowrap">
-	  <input type="text" class="form-control" placeholder="Enter Your Username" name="userName" id="userName"
+	  <input type="text" class="form-control" required="true" placeholder="Enter Your Username" name="userName" id="userName"
 	  <%if(request.getAttribute("userName")!=null){ %>
 	  value="<%=request.getAttribute("userName") %>"<%} %> >
 	  <div class="input-group-append">
 	  		<button class="btn btn-outline-secondary" type="submit" name="submit" value="search">Search</button>
 	  </div><br>
-	  <% if(request.getAttribute("invalidUserName") != null) {%>
-	  <p class="h6" style="color:red"> <%= request.getAttribute("invalidUserName") %> </p></div>
+	  <% if(request.getAttribute("invalidCredentials") != null) {%>
+	  <p class="h6" style="color:red"> <%= request.getAttribute("invalidCredentials") %> </p></div>
 	  <%}if((request.getAttribute("userName") != null && request.getAttribute("userPassword")==null) && request.getAttribute("invalidUserName") == null){ %>
 	  		</div><br>
 	  		<p class="h6">What is your childhood name?</p>
 	  		<div class="input-group flex-nowrap">
-		  		<input type="text" class="form-control" placeholder="Enter Your Recovery Answer" name="recoveryAns" id="recoveryAns">
+		  		<input type="text" class="form-control" required="true" placeholder="Enter Your Recovery Answer" name="recoveryAns" id="recoveryAns">
 	 			 <div class="input-group-append">
 			  		<button class="btn btn-outline-secondary" type="submit" name="submit" value="submit">Submit</button>
 			  	</div>
 	 		</div>
-	  <%} %>
+	  <%}%>
 	</form>
 	</div>
-	<div>
-		 <%if(request.getAttribute("userName") != null && request.getAttribute("userPassword")!=null){ %>
-		  		<br> <p class="h6" >Your Password is<b> <%= request.getAttribute("userPassword") %> </b></p>
-		  
-		  <%} %><a href="./index.jsp">Login?</a>
+	<div style="margin:10% 10% 0% 10%">
+		 <%if(request.getAttribute("userName") != null && request.getAttribute("password")!=null){ %>
+		  		<div class="alert alert-success" role="alert">
+				  Your Password is<b> <%= request.getAttribute("password") %></b> <a href="./index.jsp" class="alert-link">Login?</a>.
+				</div> 		
+		  <%} 
+		 	if(request.getAttribute("userName") != null && request.getAttribute("password")==null && request.getAttribute("recoveryAns")!=null){%>
+		 		 <p class="h6" style="color:red"> <%= request.getAttribute("recoveryAns") %> </p></div>
+		 	<%}%>
 	</div>
 
 

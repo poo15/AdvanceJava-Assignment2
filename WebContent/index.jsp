@@ -13,14 +13,14 @@
   <span class="navbar-brand mb-0 h1" style="margin-left: 30%">Image Utility System</span>
 </nav>
 <div style="margin: 10% ">
-	<form action="Login" method="post">
+	<form action="LoginController" method="post">
 	  <div class="form-group">
 	    <label for="userName">Username</label>
-	    <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter Username">
+	    <input type="text" class="form-control" name="userName" required="true" id="userName" placeholder="Enter Username">
 	  </div>
 	  <div class="form-group">
 	    <label for="password">Password</label>
-	    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+	    <input type="password" class="form-control" name="password" required="true"  id="password" placeholder="Password">
 	  </div>
 	  <% if(request.getAttribute("invalidCredentials") != null) {%>
 	  <p class="h6" style="color:red"> <%= request.getAttribute("invalidCredentials") %> </p>

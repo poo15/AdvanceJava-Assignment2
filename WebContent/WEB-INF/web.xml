@@ -7,53 +7,45 @@
   </welcome-file-list>
   
   <servlet>
-    <servlet-name>Login</servlet-name>
-    <servlet-class>com.nagarro.java.Assignment3.Servlet.Login</servlet-class>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.nagarro.ImageUtility.Controller.LoginController</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>Login</servlet-name>
-    <url-pattern>/Login</url-pattern>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
   
    <servlet>
-    <servlet-name>ImageUpload</servlet-name>
-    <servlet-class>com.nagarro.java.Assignment3.Servlet.ImageUpload</servlet-class>
+    <servlet-name>ImageUploadController</servlet-name>
+    <servlet-class>com.nagarro.ImageUtility.Controller.ImageUploadController</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>ImageUpload</servlet-name>
-    <url-pattern>/ImageUpload</url-pattern>
+    <servlet-name>ImageUploadController</servlet-name>
+    <url-pattern>/ImageUploadController</url-pattern>
   </servlet-mapping>
 	
   <servlet>
-    <servlet-name>DeleteBook</servlet-name>
-    <servlet-class>com.nagarro.java.Assignment3.Servlet.DeleteBook</servlet-class>
+    <servlet-name>EditBookController</servlet-name>
+    <servlet-class>com.nagarro.ImageUtility.Controller.EditBookController</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>DeleteBook</servlet-name>
-    <url-pattern>/DeleteBook</url-pattern>
+    <servlet-name>EditBookController</servlet-name>
+    <url-pattern>/EditBookController</url-pattern>
   </servlet-mapping>
 	
-  <servlet>
-    <servlet-name>EditBook</servlet-name>
-    <servlet-class>com.nagarro.java.Assignment3.Servlet.EditBook</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>EditBook</servlet-name>
-    <url-pattern>/EditBook</url-pattern>
-  </servlet-mapping>  
+   
 
 	<servlet>
-    <servlet-name>PasswordRecovery</servlet-name>
-    <servlet-class>com.nagarro.java.Assignment3.Servlet.PasswordRecovery</servlet-class>
+    <servlet-name>PasswordRecoveryController</servlet-name>
+    <servlet-class>com.nagarro.ImageUtility.Controller.PasswordRecoveryController</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>PasswordRecovery</servlet-name>
-    <url-pattern>/PasswordRecovery</url-pattern>
+    <servlet-name>PasswordRecoveryController</servlet-name>
+    <url-pattern>/PasswordRecoveryController</url-pattern>
   </servlet-mapping> 	
 	
 </web-app>

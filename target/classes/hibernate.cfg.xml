@@ -11,7 +11,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping class="com.nagarro.java.Assignment3.Entity.User"/>
-        <mapping class="com.nagarro.java.Assignment3.Entity.Image"/>
+        <mapping class="com.nagarro.ImageUtility.Entity.User"/>
+        <mapping class="com.nagarro.ImageUtility.Entity.Image"/>
     </session-factory>
 </hibernate-configuration>
